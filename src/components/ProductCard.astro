@@ -1,0 +1,34 @@
+---
+interface Product {
+    heading: string;
+    subheading: string;
+    image: string;
+    link: string;
+}
+const {
+    heading,
+    subheading,
+    image,
+    link = "/products",
+} = Astro.props.product as Product;
+---
+
+<div class="text-center flex flex-col items-center group">
+    <a href={link}>
+        <div
+            class="aspect-square grid place-items-center rounded-full border-8 border-violet-200 h-32 lg:h-52 group-hover:bg-violet-200 transition-all duration-1000"
+        >
+            <img class="p-4 h-28 lg:h-48" src={image} alt="Drum" />
+        </div>
+    </a>
+    <a href={link}>
+        <h3 class="text-xl lg:text-2xl font-bold mt-8">
+            {heading}
+        </h3>
+    </a>
+    <a href={link}>
+        <p class="text-base lg:text-lg mt-1">
+            {subheading}
+        </p>
+    </a>
+</div>
