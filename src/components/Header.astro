@@ -1,1 +1,21 @@
-<header>Header</header>
+---
+const navLinks = [
+    { text: "Home", href: "/" },
+    { text: "About", href: "/about" },
+    { text: "Products", href: "/products" },
+    { text: "Contact", href: "/contact" },
+];
+---
+
+<header class="bg-violet-50">
+    <div
+        class="container mx-auto px-5 py-5 flex flex-col md:flex-row gap-2 justify-between items-center"
+    >
+        <a href="/">
+            <span class="text-lg font-bold">StarJam</span>
+        </a>
+        <nav class="flex items-center gap-4 md:gap-8">
+            {navLinks.map((link) => <a href={link.href}>{link.text}</a>)}
+        </nav>
+    </div>
+</header>
