@@ -1,3 +1,7 @@
+---
+import Button from "@components/Button.astro";
+---
+
 <img
     src="/dictionary.png"
     alt="Djembe dictionary meaning"
@@ -21,8 +25,12 @@
             <div
                 class="flex items-center justify-center lg:justify-start text-center gap-4 mt-8"
             >
-                <a href="/products">Explore Products</a>
-                <a href="/contact">Contact Us</a>
+                <Button href="/products" intent="primary" rounded="md">
+                    Explore Products
+                </Button>
+                <Button href="/contact" intent="ghost" rounded="md">
+                    Contact Us
+                </Button>
             </div>
         </div>
     </div>

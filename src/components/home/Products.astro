@@ -1,6 +1,7 @@
 ---
 import ProductCard from "@components/ProductCard.astro";
 import products from "@data/products.json";
+import Button from "@components/Button.astro";
 ---
 
 <section class="mt-4">
@@ -14,7 +15,9 @@ import products from "@data/products.json";
             {products.map((product) => <ProductCard {product} />)}
         </div>
         <div class="mt-8 lg:mt-12 flex justify-center text-center">
-            <a href="/products">View All Products</a>
+            <Button href="/products" intent="primary" rounded="md">
+                View All Products
+            </Button>
         </div>
     </div>
 </section>
