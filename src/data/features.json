@@ -2,21 +2,21 @@
     {
         "heading": "Rich Sound Experience",
         "subheading": "Crafted from mango wood for exceptional sound quality, our djembes offer a rich and immersive sonic experience.",
-        "image": "/feature/feature-1.png"
+        "icon": "fa-duotone fa-waveform-lines"
     },
     {
         "heading": "Lightweight & Durable",
         "subheading": "Our fiber body djembes provide a lightweight and durable option for effortless playing.",
-        "image": "/feature/feature-2.png"
+        "icon": "fa-duotone fa-feather-pointed"
     },
     {
         "heading": "Exclusive Color Range",
         "subheading": "Discover our djembes, setting you apart with unmatched options manufactured by no one else in India.",
-        "image": "/feature/feature-3.png"
+        "icon": "fa-duotone fa-palette"
     },
     {
         "heading": "Unmatched Pricing",
         "subheading": "Enjoy superior quality and performance at competitive prices with our djembes.",
-        "image": "/feature/feature-4.png"
+        "icon": "fa-duotone fa-tags"
     }
 ]
