@@ -1,38 +1,129 @@
 ---
+const testimonials = [
+    {
+        name: "John Doe",
+        designation: "CEO",
+        quote: "StarJam drums have revolutionized my playing experience. The sound quality is unparalleled, and the craftsmanship is exceptional.",
+    },
+    {
+        name: "Jane Smith",
+        designation: "Musician",
+        quote: "As a professional drummer, I rely on StarJam drums for their incredible durability and versatility. They never disappoint!",
+    },
+    {
+        name: "Mike Johnson",
+        designation: "Drum Teacher",
+        quote: "I highly recommend StarJam drums to my students. The precision sound and ergonomic design make learning and performing a joy.",
+    },
+    {
+        name: "Sarah Thompson",
+        designation: "Music Producer",
+        quote: "StarJam drums are my go-to choice for recording sessions. The attention to detail and impeccable sound quality make them stand out from the rest.",
+    },
+];
 ---
 
-<section
-    class="overflow-hidden bg-gradient-to-r from-violet-100 to-violet-100 via-violet-300 relative"
+<div
+    id="default-carousel"
+    class="relative w-full bg-gradient-to-tr from-violet-200 to-violet-400"
+    data-carousel="slide"
 >
     <h2 class="sr-only">Testimonials</h2>
-    <div
-        class="max-w-6xl container mx-auto px-5 py-10 lg:py-16 flex items-center justify-between lg:gap-16"
-    >
-        <div><i class="fas fa-chevron-left fa-3x text-violet-500"></i></div>
-        <div class="flex-1 max-w-2xl text-center relative">
-            <i
-                class="text-violet-400/20 -top-16 left-0 absolute fa-solid fa-quote-left text-9xl"
-            ></i>
-            <i
-                class="-bottom-16 right-0 text-violet-50/20 absolute fa-solid fa-quote-right text-9xl"
-            ></i>
-            <blockquote class="text-balance">
-                I've been using StarJam drums in my music classes for years. The
-                sound quality and craftsmanship are unparalleled. My students
-                love playing them, and the durability ensures they last for
-                years of use.
-            </blockquote>
-            <h3 class="text-xl font-bold mt-4">Sarah Thompson</h3>
-            <span class="text-sm text-violet-950">Music Educator</span>
-        </div>
-        <div><i class="fas fa-chevron-right fa-3x text-violet-500"></i></div>
-        <ul
-            class="mt-8 flex items-center justify-center gap-3 absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-            <li class="rounded-full h-4 w-4 border-black border-2 bg-black">
-            </li>
-            <li class="rounded-full h-4 w-4 border-black border-2"></li>
-            <li class="rounded-full h-4 w-4 border-black border-2"></li>
-        </ul>
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden max-w-2xl mx-auto">
+        <i
+            class="fa-solid fa-quote-left pointer-events-none text-9xl absolute -top-8 left-4 text-violet-200/20"
+        ></i>
+        <i
+            class="fa-solid fa-quote-left rotate-180 pointer-events-none text-9xl absolute -bottom-8 right-4 text-violet-900/10"
+        ></i>
+        {
+            testimonials.map((testimonial) => (
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <div class="max-w-md mx-auto flex items-center justify-end p-4 pb-16 flex-col h-full text-center">
+                        <blockquote class="text-balance">
+                            {testimonial.quote}
+                        </blockquote>
+                        <h3 class="text-xl font-bold mt-4">
+                            {testimonial.name}
+                        </h3>
+                        <span class="text-sm text-violet-950">
+                            {testimonial.designation}
+                        </span>
+                    </div>
+                </div>
+            ))
+        }
     </div>
-</section>
+    <!-- Slider indicators -->
+    <div
+        class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2"
+    >
+        {
+            testimonials.map((testimonial, index) => (
+                <button
+                    type="button"
+                    class="w-3 h-3 rounded-full"
+                    aria-current={!index ? true : false}
+                    aria-label={`Slide ${index + 1}`}
+                    data-carousel-slide-to={index}
+                />
+            ))
+        }
+    </div>
+    <!-- Slider controls -->
+    <button
+        type="button"
+        class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        data-carousel-prev
+    >
+        <span
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+        >
+            <svg
+                aria-hidden="true"
+                class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"></path>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button
+        type="button"
+        class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        data-carousel-next
+    >
+        <span
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+        >
+            <svg
+                aria-hidden="true"
+                class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"></path>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
+<script>
+    import "flowbite";
+</script>
