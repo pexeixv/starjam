@@ -2,21 +2,25 @@
     {
         "heading": "Mango Wood Body",
         "subheading": "Nut-Bolt Tunable",
-        "image": "/drum/drum-1.png"
+        "image": "/drum/drum-1.png",
+        "link": "/products/1"
     },
     {
         "heading": "Mango Wood Body",
         "subheading": "Rope Weave",
-        "image": "/drum/drum-2.png"
+        "image": "/drum/drum-2.png",
+        "link": "/products/1"
     },
     {
         "heading": "Fiber Body",
         "subheading": "Nut-Bolt Tunable",
-        "image": "/drum/drum-3.png"
+        "image": "/drum/drum-3.png",
+        "link": "/products/1"
     },
     {
         "heading": "Fiber Body",
         "subheading": "Rope Weave",
-        "image": "/drum/drum-4.png"
+        "image": "/drum/drum-4.png",
+        "link": "/products/1"
     }
 ]
