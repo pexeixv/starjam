@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Cta from "@components/Cta.astro";
+import products from "@data/products.json";
+import ProductCard from "@components/ProductCard.astro";
+---
+
+<BaseLayout title="Products">
+    <section>
+        <div class="container mx-auto px-5 py-10 lg:py-20">
+            <h1 class="text-text font-bold text-5xl text-center">Products</h1>
+            <div
+                class="grid grid-cols-2 lg:grid-cols-4 mt-20 lg:mt-24 gap-x-8 gap-y-16"
+            >
+                {products.map((product) => <ProductCard {product} />)}
+                {products.map((product) => <ProductCard {product} />)}
+            </div>
+        </div>
+    </section>
+    <Cta />
+</BaseLayout>
