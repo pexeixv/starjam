@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://starjam.in/sitemap-index.xml

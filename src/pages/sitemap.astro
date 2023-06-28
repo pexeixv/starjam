@@ -1,0 +1,98 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Cta from "@components/Cta.astro";
+
+const links = [
+    {
+        title: "Home",
+        href: "/",
+        children: [
+            {
+                title: "About",
+                href: "/about",
+            },
+            {
+                title: "Products",
+                href: "/products",
+                children: [
+                    {
+                        title: "Product 1",
+                        href: "/products/1",
+                    },
+                ],
+            },
+            {
+                title: "Contact",
+                href: "/contact",
+            },
+            {
+                title: "Terms & Conditions",
+                href: "/terms",
+            },
+            {
+                title: "Privacy Policy",
+                href: "/privacy",
+            },
+        ],
+    },
+];
+---
+
+<BaseLayout title="Sitemap">
+    <section>
+        <div class="container mx-auto px-5 py-10 lg:py-20">
+            <h1 class="text-text font-bold text-5xl text-center">Sitemap</h1>
+            <ul class="pl-8 w-fit mx-auto mt-16">
+                {
+                    links.map((link) => (
+                        <li class="mt-2">
+                            <a href={link.href} class="text-xl font-bold">
+                                {link.title}
+                            </a>
+                            {link.children && (
+                                <ul class="pl-8">
+                                    {link.children.map((child) => (
+                                        <li class="mt-2">
+                                            <a
+                                                href={child.href}
+                                                class="text-lg"
+                                            >
+                                                <span class="relative bottom-1">
+                                                    &angrt;
+                                                </span>
+                                                {child.title}
+                                            </a>
+                                            {child.children && (
+                                                <ul class="pl-8">
+                                                    {child.children.map(
+                                                        (grandchild) => (
+                                                            <li class="mt-2">
+                                                                <a
+                                                                    href={
+                                                                        grandchild.href
+                                                                    }
+                                                                >
+                                                                    <span class="relative bottom-1">
+                                                                        &angrt;
+                                                                    </span>
+                                                                    {
+                                                                        grandchild.title
+                                                                    }
+                                                                </a>
+                                                            </li>
+                                                        )
+                                                    )}
+                                                </ul>
+                                            )}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </section>
+    <Cta />
+</BaseLayout>
