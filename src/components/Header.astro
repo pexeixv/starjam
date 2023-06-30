@@ -1,10 +1,24 @@
 ---
+import { twMerge } from "tailwind-merge";
+
 const navLinks = [
     { text: "Home", href: "/" },
     { text: "About", href: "/about" },
     { text: "Products", href: "/products" },
     { text: "Contact", href: "/contact" },
 ];
+const pathname = new URL(Astro.request.url).pathname;
+
+const isNavActive = (href) => {
+    if (href === "/" && pathname === "/") return true;
+    if (href === "/" || pathname === "/") return false;
+    return pathname.includes(href);
+};
+
+const common =
+    "after:content-[''] after:block after:h-1  after:bg-primary relative after:absolute after:-bottom-1 hover:after:w-full after:transition-all after:duration-300 after:rounded-full";
+const active = "after:w-1/2";
+const notActive = "after:w-0";
 ---
 
 <header class="bg-white shadow">
@@ -15,7 +29,20 @@ const navLinks = [
             <span class="text-lg font-bold">StarJam</span>
         </a>
         <nav class="flex items-center gap-4 md:gap-8">
-            {navLinks.map((link) => <a href={link.href}>{link.text}</a>)}
+            {
+                navLinks.map((link) => (
+                    <a
+                        href={link.href}
+                        class={
+                            isNavActive(link.href)
+                                ? twMerge(common, active)
+                                : twMerge(common, notActive)
+                        }
+                    >
+                        {link.text}
+                    </a>
+                ))
+            }
         </nav>
     </div>
 </header>
