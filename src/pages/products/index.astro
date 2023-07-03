@@ -1,8 +1,22 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Cta from "@components/Cta.astro";
-import products from "@data/products.json";
+import hygraph from "@js/hygraph";
 import ProductCard from "@components/ProductCard.astro";
+const convertData = (data) => {
+    return data.map((item) => {
+        const { title, subtitle, image, slug } = item;
+        return {
+            heading: title,
+            subheading: subtitle,
+            image: image.url,
+            link: `/products/${slug}`,
+        };
+    });
+};
+
+const data = await hygraph("products");
+const products = await convertData(data);
 ---
 
 <BaseLayout title="Products">
@@ -12,7 +26,6 @@ import ProductCard from "@components/ProductCard.astro";
             <div
                 class="grid grid-cols-2 lg:grid-cols-4 mt-20 lg:mt-24 gap-x-8 gap-y-16"
             >
-                {products.map((product) => <ProductCard {product} />)}
                 {products.map((product) => <ProductCard {product} />)}
             </div>
         </div>

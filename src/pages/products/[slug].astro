@@ -1,0 +1,105 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hygraph from "@js/hygraph";
+export async function getStaticPaths() {
+    const posts = await Hygraph("products");
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+const { post } = Astro.props;
+---
+
+<BaseLayout title={`${post.title || ""} ${post.subtitle || ""}`}>
+    <section>
+        <div class="container mx-auto px-5 py-10 lg:py-20">
+            <div class="flex flex-col lg:flex-row gap-16 lg:gap-28">
+                <div class="lg:w-1/2 grid place-items-center">
+                    <div
+                        class="bg-white rounded-3xl shadow-md grid place-items-center p-8 lg:p-16 w-full max-w-md"
+                    >
+                        <img src={post.image.url} class="h-64 lg:h-96" alt="" />
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl">
+                        {post.title}
+                    </h1>
+                    <p class="mt-2 text-xl">{post.subtitle}</p>
+                    {
+                        post?.drumSizes?.length !== 0 && (
+                            <>
+                                <h2 class="text-xl font-bold md:text-2xl mt-12">
+                                    Diameter Size
+                                    <span class="text-sm font-normal">
+                                        (in inches)
+                                    </span>
+                                </h2>
+                                <div class="flex items-center flex-wrap gap-4 mt-4">
+                                    {post.drumSizes.map((size) => (
+                                        <span
+                                            class="grid place-items-center rounded-full bg-white text-sm  h-10 aspect-square"
+                                            title={`${size.sizeInInches} inches`}
+                                        >
+                                            {size.sizeInInches}
+                                        </span>
+                                    ))}
+                                </div>
+                            </>
+                        )
+                    }
+                    {
+                        post?.drumColours?.length !== 0 && (
+                            <>
+                                <h2 class="text-xl font-bold md:text-2xl mt-12">
+                                    Colours
+                                </h2>
+                                <div class="flex items-center flex-wrap gap-4 mt-4">
+                                    {post.drumColours.map((color) => (
+                                        <span
+                                            class="grid place-items-center rounded-full text-sm  h-10 aspect-square"
+                                            style={`background: ${color.colourCode.hex}`}
+                                            title={color.name}
+                                        />
+                                    ))}
+                                </div>
+                            </>
+                        )
+                    }
+                    <div
+                        class="flex items-center gap-4 justify-start flex-wrap mt-16"
+                    >
+                        <a href="#" class="block">
+                            <img
+                                src="/amazon.png"
+                                alt=" Buy now at Amazon.in"
+                                class="h-12"
+                            />
+                        </a>
+                        <a
+                            href="https://wa.me/919657451879?text=I%20want%20to%20place%20an%20order"
+                            target="_blank"
+                            class="bg-green-500 h-12 flex items-center gap-2 rounded-full text-white p-4 hover:opacity-75 transition-opacity duration-300 text-center"
+                        >
+                            <i class="fab fa-whatsapp text-xl lg:text-2xl"></i>
+                            Order on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {
+        post?.content && (
+            <section>
+                <div class="container mx-auto px-5 py-10 lg:py-20">
+                    <div class="prose mx-auto">
+                        <Fragment set:html={post.content.html} />
+                    </div>
+                </div>
+            </section>
+        )
+    }
+</BaseLayout>

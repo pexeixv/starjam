@@ -22,6 +22,8 @@
     "@tailwindcss/typography": "^0.5.9",
     "astro-sitemap": "^0.6.0",
     "class-variance-authority": "^0.6.0",
+    "graphql": "^16.7.1",
+    "graphql-request": "^6.1.0",
     "tailwind-merge": "^1.13.2"
   }
 }
