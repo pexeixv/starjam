@@ -15,10 +15,9 @@ const isNavActive = (href) => {
     return pathname.includes(href);
 };
 
-const common =
-    "after:content-[''] after:block after:h-1  after:bg-primary relative after:absolute after:-bottom-1 hover:after:w-full after:transition-all after:duration-300 after:rounded-full";
-const active = "after:w-1/2";
-const notActive = "after:w-0";
+const active =
+    "after:content-[''] after:block after:h-1  after:bg-primary relative after:absolute after:-bottom-1  after:rounded-full after:w-4 after:left-1/2 after:-translate-x-1/2";
+const notActive = "";
 ---
 
 <header class="bg-white shadow">
@@ -33,11 +32,7 @@ const notActive = "after:w-0";
                 navLinks.map((link) => (
                     <a
                         href={link.href}
-                        class={
-                            isNavActive(link.href)
-                                ? twMerge(common, active)
-                                : twMerge(common, notActive)
-                        }
+                        class={isNavActive(link.href) ? active : notActive}
                     >
                         {link.text}
                     </a>
