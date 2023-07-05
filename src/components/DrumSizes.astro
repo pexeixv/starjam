@@ -1,0 +1,43 @@
+---
+const { data } = Astro.props;
+---
+
+{
+    data?.length !== 0 && (
+        <>
+            <h2 class="text-xl font-bold md:text-2xl mt-12">
+                Diameter Size
+                <span class="text-sm font-normal">(in inches)</span>
+            </h2>
+            <div class="flex items-center flex-wrap gap-4 mt-4" id="sizes-grid">
+                {data.map((size) => (
+                    <span
+                        class="grid place-items-center rounded-full bg-white text-sm  h-10 aspect-square cursor-pointer"
+                        title={`${size.sizeInInches} inches`}
+                    >
+                        {size.sizeInInches}
+                    </span>
+                ))}
+            </div>
+        </>
+    )
+}
+
+<script>
+    const sizes = document.querySelectorAll(
+        "#sizes-grid span"
+    ) as NodeListOf<HTMLSpanElement>;
+    const sizeGrid = document.querySelector("#sizes-grid") as HTMLDivElement;
+
+    sizes.forEach((size) =>
+        size.addEventListener("click", (e) => {
+            sizes.forEach((size) => {
+                size.classList.remove("bg-text");
+                size.classList.remove("font-bold");
+            });
+            e?.target?.classList?.add("bg-text");
+            e?.target?.classList?.add("font-bold");
+            sizeGrid.dataset.size = e?.target?.innerText;
+        })
+    );
+</script>

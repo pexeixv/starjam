@@ -23,6 +23,9 @@ const queries = {
             url
           }
         }
+        images {
+          url
+        }
         content {
           html
         }

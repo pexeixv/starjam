@@ -9,6 +9,10 @@ export async function getStaticPaths() {
     }));
 }
 const { post } = Astro.props;
+if (post.images.length) var images = post.images.map((image) => image.url);
+import ProductCarousel from "@components/ProductCarousel.astro";
+import DrumSizes from "@components/DrumSizes.astro";
+import DrumColours from "@components/DrumColours.astro";
 ---
 
 <BaseLayout title={`${post.title || ""} ${post.subtitle || ""}`}>
@@ -16,61 +20,15 @@ const { post } = Astro.props;
         <div class="container mx-auto px-5 py-10 lg:py-20">
             <div class="flex flex-col lg:flex-row gap-16 lg:gap-28">
                 <div class="lg:w-1/2 grid place-items-center">
-                    <div
-                        class="bg-white rounded-3xl shadow-md grid place-items-center p-8 lg:p-16 w-full max-w-md"
-                    >
-                        <img src={post.image.url} class="h-64 lg:h-96" alt="" />
-                    </div>
+                    <ProductCarousel images={images || [post.image.url]} />
                 </div>
                 <div class="lg:w-1/2">
                     <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl">
                         {post.title}
                     </h1>
                     <p class="mt-2 text-xl">{post.subtitle}</p>
-                    {
-                        post?.drumSizes?.length !== 0 && (
-                            <>
-                                <h2 class="text-xl font-bold md:text-2xl mt-12">
-                                    Diameter Size
-                                    <span class="text-sm font-normal">
-                                        (in inches)
-                                    </span>
-                                </h2>
-                                <div class="flex items-center flex-wrap gap-4 mt-4">
-                                    {post.drumSizes.map((size) => (
-                                        <span
-                                            class="grid place-items-center rounded-full bg-white text-sm  h-10 aspect-square"
-                                            title={`${size.sizeInInches} inches`}
-                                        >
-                                            {size.sizeInInches}
-                                        </span>
-                                    ))}
-                                </div>
-                            </>
-                        )
-                    }
-                    {
-                        post?.drumColours?.length !== 0 && (
-                            <>
-                                <h2 class="text-xl font-bold md:text-2xl mt-12">
-                                    Colours
-                                </h2>
-                                <div class="flex items-center flex-wrap gap-4 mt-4">
-                                    {post.drumColours.map((color) => (
-                                        <span
-                                            class="grid place-items-center rounded-full text-sm h-10 aspect-square"
-                                            style={`background: ${
-                                                color?.image
-                                                    ? `url(${color?.image?.url})`
-                                                    : color?.colourCode?.hex
-                                            }`}
-                                            title={color?.name}
-                                        />
-                                    ))}
-                                </div>
-                            </>
-                        )
-                    }
+                    <DrumSizes data={post.drumSizes} />
+                    <DrumColours data={post.drumColours} />
                     <div
                         class="flex items-center gap-4 justify-start flex-wrap mt-16"
                     >
@@ -82,9 +40,9 @@ const { post } = Astro.props;
                             />
                         </a>
                         <a
-                            href="https://wa.me/919657451879?text=I%20want%20to%20place%20an%20order"
+                            id="whatsapp-button"
                             target="_blank"
-                            class="bg-green-500 h-12 flex items-center gap-2 rounded-full text-white p-4 hover:opacity-75 transition-opacity duration-300 text-center"
+                            class="bg-green-500 h-12 flex items-center gap-2 rounded-full text-white p-4 hover:opacity-75 transition-opacity duration-300 text-center cursor-pointer"
                         >
                             <i class="fab fa-whatsapp text-xl lg:text-2xl"></i>
                             Order on WhatsApp
@@ -94,6 +52,27 @@ const { post } = Astro.props;
             </div>
         </div>
     </section>
+
+    <script>
+        const whatsappButton = document.querySelector(
+            "#whatsapp-button"
+        ) as HTMLAnchorElement;
+
+        whatsappButton.addEventListener("click", () => {
+            const h1 = document.querySelector("h1").innerText;
+            const h2 =
+                document.querySelector("h1").nextElementSibling.innerText;
+            const size =
+                document.querySelector("#sizes-grid")?.dataset?.size || null;
+            const color =
+                document.querySelector("#colors-grid")?.dataset?.color || null;
+            let link = `https://wa.me/919657451879?text=I want to place an order for ${h1.trim()} ${h2.trim()}`;
+            if (size) link += `, size ${size}in`;
+            if (color) link += `, ${color} colour`;
+            link += ".";
+            window.open(link);
+        });
+    </script>
 
     {
         post?.content && (

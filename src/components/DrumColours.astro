@@ -1,0 +1,51 @@
+---
+const { data } = Astro.props;
+---
+
+{
+    data?.length !== 0 && (
+        <>
+            <h2 class="text-xl font-bold md:text-2xl mt-12">Colours</h2>
+            <div
+                class="flex items-center flex-wrap gap-4 mt-4"
+                id="colors-grid"
+            >
+                {data.map((color) => (
+                    <span
+                        class="grid place-items-center rounded-full text-sm h-10 aspect-square cursor-pointer relative"
+                        style={`background: ${
+                            color?.image
+                                ? `url(${color?.image?.url})`
+                                : color?.colourCode?.hex
+                        }`}
+                        title={color?.name}
+                        data-color={color?.name}
+                    >
+                        <span class="absolute top-[120%] left-1/2 -translate-x-1/2 bg-black text-white px-1 rounded hidden">
+                            {color?.name}
+                        </span>
+                    </span>
+                ))}
+            </div>
+        </>
+    )
+}
+
+<script>
+    const colorName = document.querySelector(
+        "#color-name"
+    ) as HTMLParagraphElement;
+    const colors = document.querySelectorAll(
+        "#colors-grid > span"
+    ) as NodeListOf<HTMLSpanElement>;
+    const colorGrid = document.querySelector("#colors-grid") as HTMLDivElement;
+    colors.forEach((color) =>
+        color.addEventListener("click", (e) => {
+            colors.forEach((color) =>
+                color?.firstElementChild?.classList?.add("hidden")
+            );
+            e?.target.firstElementChild?.classList.remove("hidden");
+            colorGrid.dataset.color = e?.target?.firstElementChild?.innerText;
+        })
+    );
+</script>
