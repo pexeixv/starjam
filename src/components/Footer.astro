@@ -21,7 +21,9 @@ const legalLinks = [
                 >
                     {
                         navLinks.map((link) => (
-                            <a href={link.href}>{link.text}</a>
+                            <a href={link.href} class="hover:underline">
+                                {link.text}
+                            </a>
                         ))
                     }
                 </nav>
@@ -30,7 +32,9 @@ const legalLinks = [
                 >
                     {
                         legalLinks.map((link) => (
-                            <a href={link.href}>{link.text}</a>
+                            <a href={link.href} class="hover:underline">
+                                {link.text}
+                            </a>
                         ))
                     }
                 </nav>

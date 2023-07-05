@@ -19,6 +19,14 @@ const { title = "", description = "" } = Astro.props as Props;
         <meta name="description" content={description} />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <link rel="shortcut icon" href="//gavn.in/fav" type="image/x-icon" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css"
+        />
     </head>
     <body class="min-h-screen flex flex-col bg-violet-50 font-manrope">
         <Header />
