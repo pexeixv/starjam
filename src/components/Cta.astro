@@ -1,3 +1,8 @@
+---
+import { Image } from "@astrojs/image/components";
+import amazon from "@assets/amazon.png";
+---
+
 <section class="px-5 my-16">
     <div
         class="container mx-auto rounded-2xl bg-violet-200 flex flex-col lg:flex-row justify-between p-6 lg:p-8 lg:py-16 max-w-5xl gap-8 relative overflow-hidden"
@@ -14,10 +19,14 @@
                 Experience the power of rhythm with our exceptional drums. Place
                 your order now and start creating music like never before.
             </p>
-            <a href="#" class="mt-4 block">
-                <img
-                    class="h-12"
-                    src="/amazon.png"
+            <a href="#" class="mt-4 inline-block">
+                <Image
+                    class="h-12 w-auto"
+                    src={amazon}
+                    width={289}
+                    height={97}
+                    format="webp"
+                    quality={80}
                     alt="Buy now at Amazon.in"
                 />
             </a>
