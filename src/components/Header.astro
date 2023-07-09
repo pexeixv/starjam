@@ -1,6 +1,5 @@
 ---
-import { twMerge } from "tailwind-merge";
-
+import InlineSVG from "./InlineSVG.astro";
 const navLinks = [
     { text: "Home", href: "/" },
     { text: "About", href: "/about" },
@@ -25,7 +24,7 @@ const notActive = "";
         class="container mx-auto px-5 py-5 flex flex-col md:flex-row gap-2 justify-between items-center"
     >
         <a href="/">
-            <span class="text-lg font-bold">StarJam</span>
+            <InlineSVG path="logo" class="h-5 text-[#7E5DC6]" />
         </a>
         <nav class="flex items-center gap-4 md:gap-8">
             {
