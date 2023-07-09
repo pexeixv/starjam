@@ -34,8 +34,11 @@ const { data } = Astro.props;
             sizes.forEach((size) => {
                 size.classList.remove("bg-text");
                 size.classList.remove("font-bold");
+                size.classList.remove("bg-text");
+                size.classList.add("bg-white");
             });
             e?.target?.classList?.add("bg-text");
+            e?.target?.classList?.remove("bg-white");
             e?.target?.classList?.add("font-bold");
             sizeGrid.dataset.size = e?.target?.innerText;
         })
