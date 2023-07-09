@@ -12,12 +12,13 @@ const { data } = Astro.props;
             >
                 {data.map((color) => (
                     <span
-                        class="grid place-items-center rounded-full text-sm h-10 aspect-square cursor-pointer relative"
-                        style={`background: ${
-                            color?.image
-                                ? `url(${color?.image?.url})`
-                                : color?.colourCode?.hex
-                        }`}
+                        class="grid place-items-center rounded-full text-sm h-10 aspect-square cursor-pointer relative bg-cover bg-no-repeat bg-center"
+                        style={{
+                            backgroundImage: color?.image?.url
+                                ? `url(${color.image.url})`
+                                : color?.colourCode?.hex,
+                            backgroundColor: color?.colourCode?.hex,
+                        }}
                         title={color?.name}
                         data-color={color?.name}
                     >
@@ -39,12 +40,12 @@ const { data } = Astro.props;
         "#colors-grid > span"
     ) as NodeListOf<HTMLSpanElement>;
     const colorGrid = document.querySelector("#colors-grid") as HTMLDivElement;
-    colors.forEach((color) =>
-        color.addEventListener("click", (e) => {
-            colors.forEach((color) =>
+    colors.forEach((color: HTMLSpanElement) =>
+        color.addEventListener("click", (e: MouseEvent) => {
+            colors.forEach((color: HTMLSpanElement) =>
                 color?.firstElementChild?.classList?.add("hidden")
             );
-            e?.target.firstElementChild?.classList.remove("hidden");
+            e?.target?.firstElementChild?.classList.remove("hidden");
             colorGrid.dataset.color = e?.target?.firstElementChild?.innerText;
         })
     );
