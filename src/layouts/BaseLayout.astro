@@ -2,9 +2,10 @@
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import "@css/tailwind.css";
+import TwSizeIndicator from "@components/TwSizeIndicator.astro";
 interface Props {
-    title?: string | null;
-    description?: string | null;
+  title?: string | null;
+  description?: string | null;
 }
 
 const { title = "", description = "" } = Astro.props as Props;
@@ -12,27 +13,28 @@ const { title = "", description = "" } = Astro.props as Props;
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{title && `${title} • `}StarJam</title>
-        <meta name="description" content={description} />
-        <link rel="sitemap" href="/sitemap-index.xml" />
-        <link rel="shortcut icon" href="/fav.svg" type="image/x-icon" />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
-        />
-        <link
-            rel="stylesheet"
-            href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css"
-        />
-    </head>
-    <body class="min-h-screen flex flex-col bg-violet-50 font-manrope">
-        <Header />
-        <main class="flex-1">
-            <slot />
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title && `${title} • `}StarJam</title>
+    <meta name="description" content={description} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="shortcut icon" href="/fav.svg" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col bg-violet-50 font-manrope">
+    <TwSizeIndicator />
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
