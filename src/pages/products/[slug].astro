@@ -4,11 +4,11 @@ import amazon from "@assets/amazon.png";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Hygraph from "@js/hygraph";
 export async function getStaticPaths() {
-    const posts = await Hygraph("products");
-    return posts.map((post) => ({
-        params: { slug: post.slug },
-        props: { post },
-    }));
+  const posts = await Hygraph("products");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
 }
 const { post } = Astro.props;
 if (post.images.length) var images = post.images.map((image) => image.url);
@@ -18,80 +18,73 @@ import DrumColours from "@components/DrumColours.astro";
 ---
 
 <BaseLayout title={`${post.title || ""} ${post.subtitle || ""}`}>
-    <section>
-        <div class="container mx-auto px-5 py-10 lg:py-20">
-            <div class="flex flex-col lg:flex-row gap-16 lg:gap-28">
-                <div class="lg:w-1/2 grid place-items-center">
-                    <ProductCarousel images={images || [post.image.url]} />
-                </div>
-                <div class="lg:w-1/2">
-                    <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl">
-                        {post.title}
-                    </h1>
-                    <p class="mt-2 text-xl">{post.subtitle}</p>
-                    <DrumSizes data={post.drumSizes} />
-                    <DrumColours data={post.drumColours} />
-                    <div
-                        class="flex items-center gap-4 justify-start flex-wrap mt-16"
-                    >
-                        <a
-                            href="https://www.amazon.in/s?k=Star+Musical+and+Handicraft"
-                            class="block"
-                        >
-                            <Image
-                                class="h-12 w-auto"
-                                src={amazon}
-                                width={289}
-                                height={97}
-                                format="webp"
-                                quality={80}
-                                alt="Buy now at Amazon.in"
-                            />
-                        </a>
-                        <a
-                            id="whatsapp-button"
-                            target="_blank"
-                            class="bg-green-500 h-12 flex items-center gap-2 rounded-full text-white p-4 hover:opacity-75 transition-opacity duration-300 text-center cursor-pointer"
-                        >
-                            <i class="fab fa-whatsapp text-xl lg:text-2xl"></i>
-                            Order on WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <section>
+    <div class="container mx-auto px-5 py-10 lg:py-20">
+      <div class="flex flex-col lg:flex-row gap-16 lg:gap-28">
+        <div class="lg:w-1/2 grid place-items-center">
+          <ProductCarousel images={images || [post.image.url]} />
         </div>
-    </section>
+        <div class="lg:w-1/2">
+          <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl">
+            {post.title}
+          </h1>
+          <p class="mt-2 text-xl">{post.subtitle}</p>
+          <DrumSizes data={post.drumSizes} />
+          <DrumColours data={post.drumColours} />
+          <div class="flex items-center gap-4 justify-start flex-wrap mt-16">
+            <a href="https://www.amazon.in/s?k=StarJam" class="block">
+              <Image
+                class="h-12 w-auto"
+                src={amazon}
+                width={289}
+                height={97}
+                format="webp"
+                quality={80}
+                alt="Buy now at Amazon.in"
+              />
+            </a>
+            <a
+              id="whatsapp-button"
+              target="_blank"
+              class="bg-green-500 h-12 flex items-center gap-2 rounded-full text-white p-4 hover:opacity-75 transition-opacity duration-300 text-center cursor-pointer"
+            >
+              <i class="fab fa-whatsapp text-xl lg:text-2xl"></i>
+              Order on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        const whatsappButton = document.querySelector(
-            "#whatsapp-button"
-        ) as HTMLAnchorElement;
+  <script>
+    const whatsappButton = document.querySelector(
+      "#whatsapp-button"
+    ) as HTMLAnchorElement;
 
-        whatsappButton.addEventListener("click", () => {
-            const h1 = document.querySelector("h1").innerText;
-            const h2 =
-                document.querySelector("h1").nextElementSibling.innerText;
-            const size =
-                document.querySelector("#sizes-grid")?.dataset?.size || null;
-            const color =
-                document.querySelector("#colors-grid")?.dataset?.color || null;
-            let link = `https://wa.me/919657451879?text=I want to place an order for ${h1.trim()} ${h2.trim()}`;
-            if (size) link += `, size ${size}in`;
-            if (color) link += `, ${color} colour`;
-            link += ".";
-            window.open(link);
-        });
-    </script>
+    whatsappButton.addEventListener("click", () => {
+      const h1 = document.querySelector("h1").innerText;
+      const h2 = document.querySelector("h1").nextElementSibling.innerText;
+      const size = document.querySelector("#sizes-grid")?.dataset?.size || null;
+      const color =
+        document.querySelector("#colors-grid")?.dataset?.color || null;
+      let link = `https://wa.me/919657451879?text=I want to place an order for ${h1.trim()} ${h2.trim()}`;
+      if (size) link += `, size ${size}in`;
+      if (color) link += `, ${color} colour`;
+      link += ".";
+      window.open(link);
+    });
+  </script>
 
-    {
-        post?.content && (
-            <section>
-                <div class="container mx-auto px-5 py-10 lg:py-20">
-                    <div class="prose mx-auto">
-                        <Fragment set:html={post.content.html} />
-                    </div>
-                </div>
-            </section>
-        )
-    }
+  {
+    post?.content && (
+      <section>
+        <div class="container mx-auto px-5 py-10 lg:py-20">
+          <div class="prose mx-auto">
+            <Fragment set:html={post.content.html} />
+          </div>
+        </div>
+      </section>
+    )
+  }
 </BaseLayout>
