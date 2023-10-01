@@ -23,7 +23,7 @@ const queries = {
             url
           }
         }
-        images {
+        images (first: 100) {
           url
         }
         content {
