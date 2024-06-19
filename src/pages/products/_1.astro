@@ -2,151 +2,142 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 const sizes = [8, 10, 11, 12, 13, 14];
 const colors = [
-    "#000000",
-    "#694a2e",
-    "#7893f4",
-    "#56df54",
-    "#f3ec3c",
-    "#c53131",
-    "#ff6827",
-    "#6bcde2",
+  "#000000",
+  "#694a2e",
+  "#7893f4",
+  "#56df54",
+  "#f3ec3c",
+  "#c53131",
+  "#ff6827",
+  "#6bcde2",
 ];
 import ProductCarousel from "@components/ProductCarousel.astro";
 const images = [
-    "https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/1366922/pexels-photo-1366922.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    "https://images.pexels.com/photos/2418664/pexels-photo-2418664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/1366922/pexels-photo-1366922.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "https://images.pexels.com/photos/2418664/pexels-photo-2418664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 ];
 ---
 
 <BaseLayout title="Product Page">
-    <section>
-        <div class="container mx-auto px-5 py-10 lg:py-20">
-            <div class="flex flex-col lg:flex-row gap-16 lg:gap-28">
-                <div class="lg:w-1/2 grid place-items-center">
-                    <ProductCarousel {images} />
-                </div>
-                <div class="lg:w-1/2">
-                    <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl">
-                        Mango Wood Body
-                    </h1>
-                    <p class="mt-2 text-xl">Nut-Bolt Tunable</p>
-                    <h2 class="text-xl font-bold md:text-2xl mt-12">
-                        Diameter Size
-                        <span class="text-sm font-normal">(in inches)</span>
-                    </h2>
-                    <div class="flex items-center flex-wrap gap-4 mt-4">
-                        {
-                            sizes.map((size) => (
-                                <span class="grid place-items-center rounded-full bg-white text-sm  h-10 aspect-square">
-                                    {size}
-                                </span>
-                            ))
-                        }
-                    </div>
-                    <h2 class="text-xl font-bold md:text-2xl mt-12">Colours</h2>
-                    <div class="flex items-center flex-wrap gap-4 mt-4">
-                        {
-                            colors.map((color) => (
-                                <span
-                                    class="grid place-items-center rounded-full text-sm  h-10 aspect-square"
-                                    style={`background: ${color}`}
-                                />
-                            ))
-                        }
-                    </div>
-                    <div
-                        class="flex items-center gap-4 justify-start flex-wrap mt-16"
-                    >
-                        <a href="#" class="block">
-                            <img
-                                src="/amazon.png"
-                                alt=" Buy now at Amazon.in"
-                                class="h-12"
-                            />
-                        </a>
-                        <a
-                            href="https://wa.me/919657451879?text=I%20want%20to%20place%20an%20order"
-                            target="_blank"
-                            class="bg-green-500 h-12 flex items-center gap-2 rounded-full text-white p-4 hover:opacity-75 transition-opacity duration-300 text-center"
-                        >
-                            <i class="fab fa-whatsapp text-xl lg:text-2xl"></i>
-                            Order on WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <section>
+    <div class="container mx-auto px-5 py-10 lg:py-20">
+      <div class="flex flex-col lg:flex-row gap-16 lg:gap-28">
+        <div class="lg:w-1/2 grid place-items-center">
+          <ProductCarousel {images} />
         </div>
-    </section>
-
-    <section>
-        <div class="container mx-auto px-5 py-10 lg:py-20">
-            <div class="prose mx-auto">
-                <h2>Djembe Drum - Mango Wood Body, Nut-Bolt Tunable</h2>
-
-                <p>
-                    The Djembe Drum with a mango wood body and nut-bolt tunable
-                    system is a versatile and high-quality percussion
-                    instrument.
-                </p>
-
-                <h3>Features:</h3>
-                <ul>
-                    <li>
-                        <strong>Mango Wood Body:</strong> Crafted from solid mango
-                        wood, this djembe drum offers exceptional sound quality and
-                        resonance. The natural properties of mango wood contribute
-                        to warm tones and rich harmonics, providing a distinct and
-                        authentic sound experience.
-                    </li>
-                    <li>
-                        <strong>Nut-Bolt Tunable System:</strong> The nut-bolt tunable
-                        system allows for precise tuning adjustments, ensuring optimal
-                        sound projection and tuning stability. With easy-to-use tuning
-                        hardware, you can quickly tune the drum to your desired pitch,
-                        whether for studio recordings, live performances, or drumming
-                        circles.
-                    </li>
-                </ul>
-
-                <h3>Specifications:</h3>
-                <ul>
-                    <li>
-                        <strong>Size:</strong> Available in various sizes to suit
-                        different playing preferences and musical styles.
-                    </li>
-                    <li>
-                        <strong>Finish:</strong> The mango wood body features a smooth
-                        and polished finish, enhancing the drum's natural beauty
-                        and durability.
-                    </li>
-                    <li>
-                        <strong>Rope and Skin:</strong> Each djembe drum is intricately
-                        handcrafted with high-quality rope and authentic skin, ensuring
-                        a traditional and authentic playing experience.
-                    </li>
-                </ul>
-
-                <h3>Versatility and Performance:</h3>
-                <p>
-                    The djembe drum with a mango wood body and nut-bolt tunable
-                    system is ideal for drummers, percussionists, and musicians
-                    of all levels. Whether you're performing on stage, recording
-                    in the studio, or participating in drumming circles, this
-                    djembe drum delivers outstanding sound, responsiveness, and
-                    versatility.
-                </p>
-
-                <p>
-                    <em
-                        ><strong>Note:</strong> As each djembe drum is handmade and
-                        crafted from natural materials, slight variations in appearance
-                        and sound may occur, adding to the unique charm and character
-                        of each instrument.</em
-                    >
-                </p>
-            </div>
+        <div class="lg:w-1/2">
+          <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl">
+            Mango Wood Body
+          </h1>
+          <p class="mt-2 text-xl">Nut-Bolt Tunable</p>
+          <h2 class="text-xl font-bold md:text-2xl mt-12">
+            Diameter Size
+            <span class="text-sm font-normal">(in inches)</span>
+          </h2>
+          <div class="flex items-center flex-wrap gap-4 mt-4">
+            {
+              sizes.map((size) => (
+                <span class="grid place-items-center rounded-full bg-white text-sm  h-10 aspect-square">
+                  {size}
+                </span>
+              ))
+            }
+          </div>
+          <h2 class="text-xl font-bold md:text-2xl mt-12">Colours</h2>
+          <div class="flex items-center flex-wrap gap-4 mt-4">
+            {
+              colors.map((color) => (
+                <span
+                  class="grid place-items-center rounded-full text-sm  h-10 aspect-square"
+                  style={`background: ${color}`}
+                />
+              ))
+            }
+          </div>
+          <div class="flex items-center gap-4 justify-start flex-wrap mt-16">
+            <a
+              href="https://www.amazon.in/s?k=Star+Musical+and+Handicraft"
+              class="block"
+            >
+              <img src="/amazon.png" alt=" Buy now at Amazon.in" class="h-12" />
+            </a>
+            <a
+              href="https://wa.me/919657451879?text=I%20want%20to%20place%20an%20order"
+              target="_blank"
+              class="bg-green-500 h-12 flex items-center gap-2 rounded-full text-white p-4 hover:opacity-75 transition-opacity duration-300 text-center"
+            >
+              <i class="fab fa-whatsapp text-xl lg:text-2xl"></i>
+              Order on WhatsApp
+            </a>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container mx-auto px-5 py-10 lg:py-20">
+      <div class="prose mx-auto">
+        <h2>Djembe Drum - Mango Wood Body, Nut-Bolt Tunable</h2>
+
+        <p>
+          The Djembe Drum with a mango wood body and nut-bolt tunable system is
+          a versatile and high-quality percussion instrument.
+        </p>
+
+        <h3>Features:</h3>
+        <ul>
+          <li>
+            <strong>Mango Wood Body:</strong> Crafted from solid mango wood, this
+            djembe drum offers exceptional sound quality and resonance. The natural
+            properties of mango wood contribute to warm tones and rich harmonics,
+            providing a distinct and authentic sound experience.
+          </li>
+          <li>
+            <strong>Nut-Bolt Tunable System:</strong> The nut-bolt tunable system
+            allows for precise tuning adjustments, ensuring optimal sound projection
+            and tuning stability. With easy-to-use tuning hardware, you can quickly
+            tune the drum to your desired pitch, whether for studio recordings, live
+            performances, or drumming circles.
+          </li>
+        </ul>
+
+        <h3>Specifications:</h3>
+        <ul>
+          <li>
+            <strong>Size:</strong> Available in various sizes to suit different playing
+            preferences and musical styles.
+          </li>
+          <li>
+            <strong>Finish:</strong> The mango wood body features a smooth and polished
+            finish, enhancing the drum's natural beauty and durability.
+          </li>
+          <li>
+            <strong>Rope and Skin:</strong> Each djembe drum is intricately handcrafted
+            with high-quality rope and authentic skin, ensuring a traditional and
+            authentic playing experience.
+          </li>
+        </ul>
+
+        <h3>Versatility and Performance:</h3>
+        <p>
+          The djembe drum with a mango wood body and nut-bolt tunable system is
+          ideal for drummers, percussionists, and musicians of all levels.
+          Whether you're performing on stage, recording in the studio, or
+          participating in drumming circles, this djembe drum delivers
+          outstanding sound, responsiveness, and versatility.
+        </p>
+
+        <p>
+          <em
+            ><strong>Note:</strong> As each djembe drum is handmade and crafted from
+            natural materials, slight variations in appearance and sound may occur,
+            adding to the unique charm and character of each instrument.</em
+          >
+        </p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
