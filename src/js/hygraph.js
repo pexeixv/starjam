@@ -7,6 +7,8 @@ const queries = {
       products {
         title
         subtitle
+        index
+        url
         image {
           url
         }
@@ -23,7 +25,7 @@ const queries = {
             url
           }
         }
-        images (first: 100) {
+        images(first: 100) {
           url
         }
         content {
