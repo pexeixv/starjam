@@ -1,6 +1,4 @@
 ---
-import { Image } from "@astrojs/image/components";
-import amazon from "@assets/amazon.png";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Hygraph from "@js/hygraph";
 export async function getStaticPaths() {
@@ -33,13 +31,11 @@ import DrumColours from "@components/DrumColours.astro";
           <DrumColours data={post.drumColours} />
           <div class="flex items-center gap-4 justify-start flex-wrap mt-16">
             <a href={post.url} class="block">
-              <Image
+              <img
                 class="h-12 w-auto"
-                src={amazon}
+                src="/amazon.png"
                 width={289}
                 height={97}
-                format="webp"
-                quality={80}
                 alt="Buy now at Amazon.in"
               />
             </a>

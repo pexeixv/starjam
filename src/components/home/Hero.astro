@@ -1,32 +1,18 @@
 ---
-import { Image } from "@astrojs/image/components";
-import { getImage } from "@astrojs/image";
 import Button from "@components/Button.astro";
-import dictionary from "@assets/dictionary.png";
-import hero from "@assets/hero.jpg";
-const { src } = await getImage({
-    src: hero,
-    alt: "Couple playing Djembe",
-    width: 1920,
-    height: 1080,
-    format: "webp",
-    quality: 90,
-});
 ---
 
-<Image
-    src={dictionary}
+<img
+    src="/dictionary.png"
     alt="Djembe dictionary meaning"
     height={325}
     width={629}
-    format="webp"
-    quality={90}
     class="hidden lg:block z-10 max-w-xs w-full object-contain drop-shadow-lg absolute right-5 bottom-20 transition-all hover:scale-125 duration-300"
     style="transform-origin: bottom right;"
 />
 <section
-    class="relative z-0 bg-cover bg-no-repeat bg-[top_right_-6rem] md:bg-right-top lg:bg-[top_-4rem_right]"
-    style={`background-image:url(${src});clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);`}
+    class="relative z-0 bg-cover bg-no-repeat bg-[top_right_-6rem] md:bg-right-top lg:bg-[top_-4rem_right] bg-[url(/hero.jpg)]"
+    style={`clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);`}
 >
     <div class="lg:bg-black/0 bg-black/50">
         <div
