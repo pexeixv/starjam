@@ -4,7 +4,7 @@ const url = import.meta.env.CONTENT_API;
 const queries = {
   products: gql`
     query Products {
-      products {
+      products(first: 100) {
         title
         subtitle
         index

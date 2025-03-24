@@ -6,7 +6,7 @@ const { images } = Astro.props as Props;
 ---
 
 <div class="max-w-xl">
-    <div class="relative">
+    <div class="relative bg-white">
         {
             images.length > 1 && (
                 <button
@@ -37,7 +37,7 @@ const { images } = Astro.props as Props;
         <img
             src={images[0]}
             alt=""
-            class="object-contain aspect-square"
+            class="object-contain aspect-square lg:min-w-[550px]"
             id="main-image"
             data-images={JSON.stringify(images)}
         />
