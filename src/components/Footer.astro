@@ -1,68 +1,66 @@
 ---
 import InlineSVG from "./InlineSVG.astro";
 const navLinks = [
-    { text: "Home", href: "/" },
-    { text: "About", href: "/about" },
-    { text: "Products", href: "/products" },
-    { text: "Contact", href: "/contact" },
+  { text: "Home", href: "/" },
+  { text: "About", href: "/about" },
+  { text: "Products", href: "/products" },
+  { text: "Contact", href: "/contact" },
 ];
 const legalLinks = [
-    { text: "Sitemap", href: "/sitemap-index.xml" },
-    { text: "Privacy Policy", href: "/privacy" },
-    { text: "Terms & Conditions", href: "/terms" },
+  { text: "Sitemap", href: "/sitemap-index.xml" },
+  { text: "Privacy Policy", href: "/privacy" },
+  { text: "Terms & Conditions", href: "/terms" },
 ];
 ---
 
 <footer class="bg-[#7c3aed] text-white">
-    <div class="container mx-auto px-5 py-5 lg:py-10">
-        <div class="flex flex-col lg:flex-row justify-between py-4 gap-4">
-            <div class="flex flex-col gap-2 text-center lg:text-left">
-                <nav
-                    class="flex justify-center lg:justify-start items-center gap-4 text-xs sm:text-sm md:text-base"
-                >
-                    {
-                        navLinks.map((link) => (
-                            <a href={link.href} class="hover:underline">
-                                {link.text}
-                            </a>
-                        ))
-                    }
-                </nav>
-                <nav
-                    class="flex justify-center lg:justify-start items-center gap-4 text-xs sm:text-sm md:text-base"
-                >
-                    {
-                        legalLinks.map((link) => (
-                            <a href={link.href} class="hover:underline">
-                                {link.text}
-                            </a>
-                        ))
-                    }
-                </nav>
-            </div>
-            <div class="flex flex-col lg:items-end items-center justify-end">
-                <InlineSVG path="logo" class="h-5 text-white/50" />
-                <a href="/" class="text-white/90 mt-4">www.starjam.in</a>
-            </div>
-        </div>
-        <div class="block bg-white/40 w-full h-0.5"></div>
-        <div
-            class="flex items-center justify-between flex-col lg:flex-row py-4"
+  <div class="container mx-auto px-5 py-5 lg:py-10">
+    <div class="flex flex-col lg:flex-row justify-between py-4 gap-4">
+      <div class="flex flex-col gap-2 text-center lg:text-left">
+        <nav
+          class="flex justify-center lg:justify-start items-center gap-4 text-xs sm:text-sm md:text-base"
         >
-            <span class="lg:font-bold text-center lg:text-left"
-                >&copy; 2023 StarJam. All rights reserved.</span
-            >
-            <a
-                class="font-bold text-center lg:text-right group"
-                href="//gavinpereira.in/?ref=starjam.in"
-                target="_blank"
-            >
-                <i class="fas fa-code"></i> by <span
-                    class="underline decoration-transparent group-hover:decoration-inherit transition-colors duration-300"
-                >
-                    Gavin Pereira</span
-                >
-            </a>
-        </div>
+          {
+            navLinks.map((link) => (
+              <a href={link.href} class="hover:underline">
+                {link.text}
+              </a>
+            ))
+          }
+        </nav>
+        <nav
+          class="flex justify-center lg:justify-start items-center gap-4 text-xs sm:text-sm md:text-base"
+        >
+          {
+            legalLinks.map((link) => (
+              <a href={link.href} class="hover:underline">
+                {link.text}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+      <div class="flex flex-col lg:items-end items-center justify-end">
+        <InlineSVG path="logo" class="h-5 text-white/50" />
+        <a href="/" class="text-white/90 mt-4">www.starjam.in</a>
+      </div>
     </div>
+    <div class="block bg-white/40 w-full h-0.5"></div>
+    <div class="flex items-center justify-between flex-col lg:flex-row py-4">
+      <span class="lg:font-bold text-center lg:text-left"
+        >&copy; 2023 StarJam®. All rights reserved.</span
+      >
+      <a
+        class="font-bold text-center lg:text-right group"
+        href="//gavinpereira.in/?ref=starjam.in"
+        target="_blank"
+      >
+        <i class="fas fa-code"></i> by <span
+          class="underline decoration-transparent group-hover:decoration-inherit transition-colors duration-300"
+        >
+          Gavin Pereira</span
+        >
+      </a>
+    </div>
+  </div>
 </footer>
