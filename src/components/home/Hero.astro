@@ -3,38 +3,53 @@ import Button from "@components/Button.astro";
 ---
 
 <img
-    src="/dictionary.png"
-    alt="Djembe dictionary meaning"
-    height={325}
-    width={629}
-    class="hidden lg:block z-10 max-w-xs w-full object-contain drop-shadow-lg absolute right-5 bottom-20 transition-all hover:scale-125 duration-300"
-    style="transform-origin: bottom right;"
+  src="/dictionary.png"
+  alt="Djembe dictionary meaning"
+  height={325}
+  width={629}
+  class="hidden lg:block z-10 max-w-xs w-full object-contain drop-shadow-lg absolute right-5 bottom-20 transition-all hover:scale-125 duration-300"
+  style="transform-origin: bottom right;"
 />
 <section
-    class="relative z-0 bg-cover bg-no-repeat bg-[top_right_-6rem] md:bg-right-top lg:bg-[top_-4rem_right] bg-[url(/hero.jpg)]"
-    style={`clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);`}
+  class="relative z-0 bg-cover bg-no-repeat bg-[top_right_-6rem] md:bg-right-top lg:bg-[top_-4rem_right] bg-[url(/hero.jpg)]"
+  style={`clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);`}
 >
-    <div class="lg:bg-black/0 bg-black/50">
-        <div
-            class="container mx-auto px-5 py-10 lg:py-20 min-h-[85vh] text-violet-50 flex items-center flex-col justify-center lg:items-start text-center lg:text-left"
+  <div class="lg:bg-black/0 bg-black/50">
+    <div
+      class="container mx-auto px-5 py-10 lg:py-20 min-h-[85vh] text-violet-50 flex items-center flex-col justify-center lg:items-start text-center lg:text-left"
+    >
+      <h1 class="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl mt-2">
+        Unleash Your <br /> Rhythm with <br /> StarJam
+      </h1>
+      <p class="mt-4 text-lg text-violet-200 max-w-sm">
+        <i class="fas fa-star text-sm relative bottom-0.5 text-text"></i>
+        India's First & Largest Djembe Manufacturer
+      </p>
+      <p class="mt-4 text-lg text-violet-200 max-w-sm hidden">
+        Discover the Power of Drumming. Embrace Your Inner Beat. Ignite Your
+        Passion for Music.
+      </p>
+
+      <div
+        class="flex max-lg:flex-col items-center justify-center lg:justify-start text-center gap-4 mt-8"
+      >
+        <Button
+          href="/products"
+          intent="primary"
+          rounded="md"
+          className="max-lg:w-full"
         >
-            <h1 class="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-                Unleash Your <br /> Rhythm with <br /> StarJam
-            </h1>
-            <p class="mt-4 text-lg text-violet-200 max-w-sm">
-                Discover the Power of Drumming. Embrace Your Inner Beat. Ignite
-                Your Passion for Music.
-            </p>
-            <div
-                class="flex items-center justify-center lg:justify-start text-center gap-4 mt-8"
-            >
-                <Button href="/products" intent="primary" rounded="md">
-                    Explore Products
-                </Button>
-                <Button href="/contact" intent="ghost" rounded="md">
-                    Contact Us
-                </Button>
-            </div>
-        </div>
+          Explore Products
+        </Button>
+        <Button
+          href="/contact"
+          intent="ghost"
+          rounded="md"
+          className="max-lg:w-full"
+        >
+          Contact Us
+        </Button>
+      </div>
     </div>
+  </div>
 </section>

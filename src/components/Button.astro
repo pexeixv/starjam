@@ -1,56 +1,64 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 const button = cva("button", {
-    variants: {
-        intent: {
-            primary: ["bg-primary", "text-white", "hover:bg-primary/80"],
-            ghost: ["bg-violet-50/10", "hover:bg-violet-50/20"],
-            outlined: [
-                "bg-transparent",
-                "ring-primary",
-                "ring-2",
-                "hover:bg-primary",
-            ],
-        },
-        rounded: {
-            sm: "rounded-sm",
-            md: "rounded-md",
-            lg: "rounded-lg",
-            full: "rounded-full",
-        },
-        size: {
-            small: ["text-sm", "py-1", "px-2"],
-            medium: ["text-base", "py-2", "px-4"],
-        },
+  variants: {
+    intent: {
+      primary: ["bg-primary", "text-white", "hover:bg-primary/80"],
+      ghost: ["bg-violet-50/10", "hover:bg-violet-50/20"],
+      outlined: [
+        "bg-transparent",
+        "ring-primary",
+        "ring-2",
+        "hover:bg-primary",
+      ],
     },
-    compoundVariants: [
-        {
-            intent: "primary",
-            size: "medium",
-            class: "transition-all duration-300",
-        },
-        {
-            intent: "ghost",
-            size: "medium",
-            class: "transition-all duration-300",
-        },
-        {
-            intent: "outlined",
-            size: "medium",
-            class: "transition-all duration-300",
-        },
-    ],
+    rounded: {
+      sm: "rounded-sm",
+      md: "rounded-md",
+      lg: "rounded-lg",
+      full: "rounded-full",
+    },
+    size: {
+      small: ["text-sm", "py-1", "px-2"],
+      medium: ["text-base", "py-2", "px-4"],
+    },
+  },
+  compoundVariants: [
+    {
+      intent: "primary",
+      size: "medium",
+      class: "transition-all duration-300",
+    },
+    {
+      intent: "ghost",
+      size: "medium",
+      class: "transition-all duration-300",
+    },
+    {
+      intent: "outlined",
+      size: "medium",
+      class: "transition-all duration-300",
+    },
+  ],
 });
 
 export interface Props
-    extends HTMLAttributes<"a">,
-        VariantProps<typeof button> {}
-
-const { intent = "primary", size = "medium", rounded, href } = Astro.props;
+  extends HTMLAttributes<"a">,
+    VariantProps<typeof button> {
+  className?: string;
+}
+const {
+  intent = "primary",
+  size = "medium",
+  rounded,
+  href,
+  className,
+} = Astro.props;
 ---
 
-<a class={button({ intent, size, rounded })} {href}>
-    <slot />
+<a class={twMerge(button({ intent, size, rounded }), className)} {href}>
+  <slot />
 </a>

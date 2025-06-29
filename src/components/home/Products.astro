@@ -1,17 +1,17 @@
 ---
 import ProductCard from "@components/ProductCard.astro";
-import Button from "@components/Button.astro";
 import hygraph from "@js/hygraph";
 const convertData = (data) => {
-    return data.map((item) => {
-        const { title, subtitle, image, slug } = item;
-        return {
-            heading: title,
-            subheading: subtitle,
-            image: image.url,
-            link: `/products/${slug}`,
-        };
-    });
+  return data.map((item) => {
+    const { title, subtitle, image, slug, index } = item;
+    return {
+      heading: title,
+      subheading: subtitle,
+      image: image.url,
+      link: `/products/${slug}`,
+      index: index,
+    };
+  });
 };
 
 const data = await hygraph("products");
@@ -19,19 +19,21 @@ const products = await convertData(data);
 ---
 
 <section class="mt-4">
-    <div class="container mx-auto px-5 py-10 lg:py-20">
-        <h2 class="text-text font-bold text-5xl text-center mx-auto">
-            Products
-        </h2>
-        <div
-            class="grid grid-cols-2 lg:grid-cols-4 mt-20 lg:mt-24 gap-x-8 gap-y-16"
-        >
-            {products.slice(0, 4).map((product) => <ProductCard {product} />)}
-        </div>
-        <div class="mt-8 lg:mt-12 flex justify-center text-center">
-            <Button href="/products" intent="primary" rounded="md">
-                View All Products
-            </Button>
-        </div>
+  <div class="container mx-auto px-5 py-10 lg:py-20">
+    <h2 class="text-text font-bold text-5xl text-center mx-auto">Products</h2>
+    <div
+      class="grid grid-cols-2 lg:grid-cols-3 mt-20 lg:mt-24 gap-x-8 gap-y-16 max-w-7xl mx-auto"
+    >
+      {
+        products
+          .slice(0, 6)
+          .sort((a, b) => a.index - b.index)
+          .map((product) => <ProductCard {product} />)
+      }
     </div>
+    <!-- <div class="mt-8 lg:mt-12 flex justify-center text-center">
+      <Button href="/products" intent="primary" rounded="md">
+        View All Products
+      </Button> -->
+  </div>
 </section>

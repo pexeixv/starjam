@@ -40,7 +40,7 @@ importers:
         specifier: ^6.1.0
         version: 6.1.0(graphql@16.10.0)
       tailwind-merge:
-        specifier: ^1.13.2
+        specifier: ^1.14.0
         version: 1.14.0
 
 packages:

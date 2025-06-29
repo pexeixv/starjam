@@ -4,22 +4,14 @@ import FeatureCard from "@components/FeatureCard.astro";
 ---
 
 <section class="mt-4">
-    <div class="container mx-auto px-5 py-10 lg:py-20">
-        <h2 class="text-text font-bold text-5xl text-center mx-auto">
-            Why choose us?
-        </h2>
-        <div
-            class="grid justify-center sm:grid-cols-2 lg:grid-cols-4 mt-20 lg:mt-24 gap-16"
-        >
-            {features.map((feature) => <FeatureCard {feature} />)}
-        </div>
-        <div
-            class="py-4 mt-12 flex justify-center gap-2 flex-col md:flex-row max-w-sm md:max-w-none mx-auto"
-        >
-            <i class="fas fa-star relative top-1 text-text"></i>
-            <h3 class="lg:text-center text-base lg:text-lg">
-                We are the oldest and largest djembe manufacturing unit in India
-            </h3>
-        </div>
+  <div class="container mx-auto px-5 py-10 lg:py-20">
+    <h2 class="text-text font-bold text-5xl text-center mx-auto">
+      Why choose us?
+    </h2>
+    <div
+      class="grid justify-center sm:grid-cols-2 lg:grid-cols-4 mt-20 lg:mt-24 gap-16"
+    >
+      {features.map((feature) => <FeatureCard {feature} />)}
     </div>
+  </div>
 </section>
